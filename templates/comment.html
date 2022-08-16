@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row mt-3 ">
+        <div class ="col-md-5 col-sm-12 mt-5   "  >
+        <a href="{% url 'posts' %}" class="btn btn-primary"><strong>Back to Posts</strong></a>
+
+        </div>
+        </div>
+
+
+        <div class="row justify-content-center mt-3 ">
+            <div class ="col-md-5 col-sm-12  "  >
+            <form method="post">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div  class="d-grid">
+                    <button class="btn btn-success mt-3">Submit</button>
+                </div>
+            </form>
+            </div>
+            </div>
+
+
+
+
+   
+    <div class="row justify-content-center mt-3 ">
+        <div class ="col-md-5 col-sm-12 "  >
+          <p><strong>{{post.user}}</strong> {{post.created_at}}</p>
+          <p>{{post.content }}</p>
+
+        </div>
+        </div>
+
+
+</div> 
+{% endblock content %}
